@@ -12,22 +12,28 @@ cd ~/Desktop/
 
 echo "in" `pwd`
 
+# the -p option only creates directory sub path that does not exist.
 mkdir -p scaffold 
 
 cd ~/Desktop/scaffold
 
 echo "in" `pwd`
 
+
+# This says if the file exists don't create / potentially erase it.
 if [ -f $INDEX_FILE ]
 then
 	echo "File $INDEX_FILE already exists, not creating."
 else
 	touch $INDEX_FILE
+
+	# Optionally add content to the file created.
 	echo "<HTML>" >> $INDEX_FILE
 	echo "</HTML>" >> $INDEX_FILE
 	
 fi
 
+# Iterate through list typing an individual command for each dir in the list
 for item in $DIRS_TO_CREATE
 do 
 	echo "Creating $item"
